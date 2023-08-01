@@ -1,0 +1,49 @@
+취소되지 않은 진료 예약 조회하기  
+PATIENT, DOCTOR 그리고 APPOINTMENT 테이블에서 2022년 4월 13일 취소되지 않은 흉부외과(CS) 진료 예약 내역을 조회하는 SQL문을 작성해주세요. 진료예약번호, 환자이름, 환자번호, 진료과코드, 의사이름, 진료예약일시 항목이 출력되도록 작성해주세요. 결과는 진료예약일시를 기준으로 오름차순 정렬해주세요.  
+
+### 내가 쓴 풀이  
+~~~sql
+SELECT APNT_NO,
+PT_NAME,
+AP.PT_NO,
+AP.MCDP_CD,
+DR_NAME,
+APNT_YMD
+FROM APPOINTMENT AP JOIN 
+PATIENT P ON AP.PT_NO = P.PT_NO
+JOIN DOCTOR D ON AP.MDDR_ID = D.DR_ID
+WHERE
+AP.APNT_YMD LIKE '2022-04-13%'
+AND APNT_CNCL_YN = 'N'
+AND AP.MCDP_CD = 'CS'
+ORDER BY APNT_YMD;
+~~~
+
+### 다른 풀이법  
+~~~sql
+SELECT APNT_NO,
+      (SELECT PT_NAME FROM PATIENT AS P WHERE A.PT_NO = P.PT_NO) PT_NAME,
+      PT_NO,
+      MCDP_CD,
+      (SELECT DR_NAME FROM DOCTOR AS D WHERE A.MDDR_ID = D.DR_ID) DR_NAME,
+      APNT_YMD
+FROM APPOINTMENT AS A
+WHERE MCDP_CD = 'CS' AND APNT_CNCL_YN = 'N' AND DATE_FORMAT(APNT_YMD, '%Y-%m-%d') = '2022-04-13'
+ORDER BY APNT_YMD
+~~~  
+
+~~~sql
+SELECT BC.APNT_NO, A.PT_NAME, A.PT_NO, BC.MCDP_CD, BC.DR_NAME, BC.APNT_YMD
+FROM (SELECT C.PT_NO, C.MCDP_CD, C.APNT_YMD, B.DR_NAME, C.APNT_NO
+      FROM DOCTOR B
+      JOIN APPOINTMENT C
+      ON B.DR_ID = C.MDDR_ID
+      WHERE DATE_FORMAT(C.APNT_YMD, '%Y-%m-%d') = '2022-04-13'
+      AND C.MCDP_CD = 'CS'
+      AND C.APNT_CNCL_YN = 'N') BC
+JOIN PATIENT A
+ON A.PT_NO = BC.PT_NO
+ORDER BY BC.APNT_YMD ASC;
+~~~
+
+
