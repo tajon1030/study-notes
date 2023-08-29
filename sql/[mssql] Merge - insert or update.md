@@ -56,4 +56,5 @@ WHEN NOT MATCHED THEN
 
 ### 참고
 [젠트의 프로그래밍 세상](https://gent.tistory.com/371)
+
 [microsoft-MERGE(Transact-SQL)](https://learn.microsoft.com/ko-kr/sql/t-sql/statements/merge-transact-sql?view=sql-server-ver16)
