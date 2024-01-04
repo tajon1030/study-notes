@@ -101,7 +101,7 @@ SSLCACertificateFile /path/to/ca.pem   # 루트 인증서 파일
 확인결과 Root/Chain 인증서가 변경되었고 보통의 경우 Windows및 최신브라우저에 신뢰할수있는 상태로 포함되어있기때문에 추가조치할 필요가 없으나, 우리는 Server to Server API 통신을 하며 요청하는 서버의 Java 버전이 최소호환버전(jre1.8.0_131+)보다 낮은경우(jre1.7.0)에 속해 직접 Java cacerts에 루트인증서를 추가해야 했습니다.  
 (일반적으로 **웹브라우저는 내장된 CA리스트를 가지고있어서 웹에서는 브라우저 등이 자동으로 CA 승인서를 업데이트**하고, 사용자는 이러한 프로세스를 크게 인식하지 않아도 됩니다.)  
 
-(DigiCert SSL인증서 루트/체인 업데이트 2023.03.08실행)[https://cert.crosscert.com/%ec%a4%91%ec%9a%94%ea%b3%b5%ec%a7%80-digicert-ssl%ec%9d%b8%ec%a6%9d%ec%84%9c-%eb%a3%a8%ed%8a%b8-%ec%b2%b4%ec%9d%b8-%ec%97%85%eb%8d%b0%ec%9d%b4%ed%8a%b8-2023-03-08%ec%8b%a4%ed%96%89/]
+[DigiCert SSL인증서 루트/체인 업데이트 2023.03.08실행](https://cert.crosscert.com/%ec%a4%91%ec%9a%94%ea%b3%b5%ec%a7%80-digicert-ssl%ec%9d%b8%ec%a6%9d%ec%84%9c-%eb%a3%a8%ed%8a%b8-%ec%b2%b4%ec%9d%b8-%ec%97%85%eb%8d%b0%ec%9d%b4%ed%8a%b8-2023-03-08%ec%8b%a4%ed%96%89/)
 
 ## cacerts에 루트/체인 인증서 추가하기  
 **cacerts**는 Java에서 사용되는 **기본키저장소(keystore)** 중 하나로 시스템에 설치된 **SSL/TLS 인증서의 신뢰여부를 결정하는 파일**입니다.  
@@ -172,3 +172,4 @@ Tomcat 에서 SSL 적용시 가장 많이 사용되는 포맷이다. (바이너�
 
 
 chatGPT와 https://exhibitlove.tistory.com/28 참고
+SpringBoot에서의 적용은 https://tajon1030.github.io/2023-06-12-303potenday/
