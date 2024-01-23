@@ -51,3 +51,7 @@ login/logout feature 전부 개발후 merge하고 release브랜치 생성후에 
 이후 릴리즈를 main에 merge  
 main에 추가된 작업내용을 dev에 main을 merge함으로서 sync를 맞춘다.  
 => sync를 맞추는 이유 : dev는 main을 base로 생성된 branch라는 전제이기때문  
+
+
+### 실습내역
+https://github.com/tajon1030/gitflow
