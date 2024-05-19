@@ -58,7 +58,7 @@ public class Theater {
 
 
 ### 구현2 (개선본)
-클래스변수를 private으로 만들고 getter를 없애서 캡슐화  
+인스턴스변수를 private으로 만들고 getter를 없애서 캡슐화  
 ~~~java
 /**
  * 극장
